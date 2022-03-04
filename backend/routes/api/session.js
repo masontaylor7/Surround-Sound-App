@@ -10,7 +10,7 @@ const { User } = require('../../db/models')
 const router = express.Router();
 
 const validateLogin = [
-    check('credentials')
+    check('credential')
         .exists({ checkFalsy: true })
         .notEmpty()
         .withMessage('Please provide a valid email or username'),
@@ -23,6 +23,7 @@ const validateLogin = [
 // Log in
 router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
+    console.log("c and p", credential, password)
 
     const user = await User.login({ credential, password });
 
