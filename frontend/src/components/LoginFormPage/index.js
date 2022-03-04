@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -15,6 +15,14 @@ function LoginFormPage() {
         <Redirect to="/" />
     );
 
+    // useEffect(() => {
+    //     let err = []
+    //     if (password.length < 1) {
+    //         err.push('Please enter a valid password')
+    //     }
+    //     setErrors(err)
+    // }, [password, credential])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -23,7 +31,8 @@ function LoginFormPage() {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             });
-    }
+    };
+
 
     return (
         <form onSubmit={handleSubmit}>
