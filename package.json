@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/masontaylor7/Surround-Sound-App/issues"
   },
-  "homepage": "https://github.com/masontaylor7/Surround-Sound-App#readme"
+  "homepage": "https://github.com/masontaylor7/Surround-Sound-App#readme",
+  "dependencies": {
+    "react-icons": "^4.3.1"
+  }
 }
