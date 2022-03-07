@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import MusicSelection from "./components/MusicSelection";
 import Footer from "./components/Footer";
 
 function App() {
@@ -18,12 +19,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/signup">
-            <SignupFormPage />
+          <Route path="/">
+            <MusicSelection />
           </Route>
-          {/* <Route path="/audio-player">
-            <AudioPlayer />
-          </Route> */}
         </Switch>
       )}
       <Footer />
