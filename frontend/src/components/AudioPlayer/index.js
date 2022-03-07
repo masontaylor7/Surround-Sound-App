@@ -6,13 +6,15 @@ import "./AudioPlayer.css"
 function AudioPlayer() {
     //state
     const [isPlaying, setIsPlaying] = useState(false);
-    const [duration, setDuration] = useState(0)
-    const [currentTime, setCurrentTime] = useState(0)
+    const [duration, setDuration] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [volume, setVolume] = useState(0.8);
 
     //references
     const audioPlayer = useRef(); // for our audio component
-    const progressBar = useRef(); //reference to progress bar
+    const progressBar = useRef(); // reference to progress bar
     const animationRef = useRef(); // animation reference
+    const volumeSlider = useRef(); // volume control
 
     // useEffect
     useEffect((e) => {
@@ -22,13 +24,9 @@ function AudioPlayer() {
     }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
 
 
-    useEffect(() => {
-        if (duration === currentTime) {
-            togglePlayPause();
-            setCurrentTime(0);
-            changeRange();
-        }
-    }, [currentTime])
+    // useEffect(() => {
+    //     audioPlayer.volume = volume;
+    // }, [volume])
 
     const calculateTime = (secs) => {
         const minutes = Math.floor(secs / 60)
@@ -63,7 +61,6 @@ function AudioPlayer() {
         changePlayerCurrentTime();
     }
 
-
     const changePlayerCurrentTime = () => {
         progressBar.current.style.setProperty('--seek-before-width', `${progressBar.current.value / duration * 100}%`)
         setCurrentTime(progressBar.current.value)
@@ -84,7 +81,7 @@ function AudioPlayer() {
         <div className='footer'>
             <div className='audio-player-block'>
 
-                <audio ref={audioPlayer} src='https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' preload='metadata'></audio>
+                <audio ref={audioPlayer} src='https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' preload='metadata' volume={volume}></audio>
                 <button className='forwardBackward' onClick={backThirty}><BsArrowLeftCircle /> 30</button>
                 <button className='playPause' onClick={togglePlayPause}>
                     {isPlaying ? <BsPause /> : <BsPlay className='play-button'/>}
@@ -95,10 +92,14 @@ function AudioPlayer() {
                 <div className='currentTime'>{calculateTime(currentTime)}</div>
 
                 { /* progress bar*/}
-                <input type='range' className='progressBar' defaultValue='0' ref={progressBar} onChange={changeRange}/>
+                <input type='range' className='progressBar' defaultValue='0' ref={progressBar} onChange={changeRange} />
 
                 {/* duration */}
                 <div className='duration'>{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+
+                {/* Volume input */}
+                <input type='range' className='volumeSlider' defaultValue={volume} ref={volumeSlider} onChange={(e) => setVolume(e.target.value)} />
+
             </div>
         </div>
     );

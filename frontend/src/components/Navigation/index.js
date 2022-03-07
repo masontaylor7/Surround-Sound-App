@@ -18,7 +18,6 @@ function Navigation({ isLoaded }) {
             <>
                 <LoginFormModal />
                 <NavLink to="/signup">Sign Up</NavLink>
-                <NavLink to='/audio-player'>Audio Player</NavLink>
             </>
         );
     }
