@@ -16,12 +16,12 @@ module.exports = {
       {
         title: 'Test Song 3',
         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3',
-        userId: 1
+        userId: 2
       },
       {
         title: 'Test Song 4',
         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3',
-        userId: 1
+        userId: 3
       },
     ], {});
   },
