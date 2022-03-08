@@ -16,8 +16,8 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      <Navigation isLoaded={isLoaded} />
+    <div>
+      <Navigation isLoaded={isLoaded} className='nav-bar'/>
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -35,7 +35,7 @@ function App() {
         </Switch>
       )}
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import AddMusicModal from '../AddMusicModal';
 import MusicSelection from '../MusicSelection';
+import './MusicPage.css'
 
 
 function MusicPage() {

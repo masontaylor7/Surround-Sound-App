@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { newSong, allSongs } from "../../store/songs";
+import { Modal } from '../../context/Modal';
 import { useDispatch, useSelector } from "react-redux";
 
-function AddMusicForm() {
+function AddMusicForm({showModal, setShowModal}) {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
@@ -16,7 +17,7 @@ function AddMusicForm() {
         e.preventDefault();
         const song = { title, url, userId }
         dispatch(newSong(song));
-        dispatch(allSongs());
+        setShowModal(!showModal)
     };
 
 
@@ -46,7 +47,7 @@ function AddMusicForm() {
                     required
                 />
             </label>
-            <button type="submit">Publish Song</button>
+            <button type="submit" onClick={() => setShowModal(false)}>Publish Song</button>
         </form>
     );
 }

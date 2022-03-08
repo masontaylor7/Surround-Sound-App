@@ -22,13 +22,13 @@ const validateSongEntry = [
 
 router.get('/',
     asyncHandler(async (req, res) => {
-    const songs = await Song.findAll({
-        include: User
-    });
-    return res.json({
-        songs
-    })
-}));
+        const songs = await Song.findAll({
+            include: User
+        });
+        return res.json({
+            songs
+        })
+    }));
 
 router.post('/',
     validateSongEntry,
@@ -39,7 +39,15 @@ router.post('/',
             url,
             userId,
         })
-        return res.json(song)
-}))
+        const specificSong = await Song.findByPk(song.id, {
+            include: User
+        })
+        return res.json(specificSong)
+    }));
+    
+// router.delete('/:id',
+//     asyncHandler(async (req, res) => {
+//     const
+// }))
 
 module.exports = router;
