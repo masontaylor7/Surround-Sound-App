@@ -25,7 +25,6 @@ router.get('/',
     const songs = await Song.findAll({
         include: User
     });
-    console.log("this is the user", User)
     return res.json({
         songs
     })
@@ -34,13 +33,11 @@ router.get('/',
 router.post('/',
     validateSongEntry,
     asyncHandler(async (req, res) => {
-        const id = req.session.auth.userId;
-        console.log(id)
-        const { title, url } = req.body
+        const { title, url, userId } = req.body
         const song = await Song.create({
             title,
             url,
-            userId: id,
+            userId,
         })
         return res.json(song)
 }))

@@ -27,7 +27,7 @@ export const allSongs = () => async(dispatch) => {
 }
 
 export const newSong = (song) => async (dispatch) => {
-    console.log("this is the song", song)
+    console.log('inside of newSong thunk', song)
     const response = await csrfFetch('/api/songs', {
         method: "POST",
         headers: {
@@ -35,9 +35,10 @@ export const newSong = (song) => async (dispatch) => {
         },
         body: JSON.stringify(song),
     });
-    const data = response.json();
+    const data = await response.json();
     console.log("this is the data", data)
-    dispatch(addSong(data.song));
+    dispatch(addSong(data));
+    dispatch(getSongs())
     return response;
 }
 
@@ -50,13 +51,13 @@ const songsReducer = (state = initialState, action) => {
         case GET_SONGS:
             newState = { ...state }
             action.songs.map(song => {
-                newState[song.id] = song
+                return newState[song.id] = song
             });
             return newState;
         case ADD_SONG:
-            {newState = { ...state }
+            newState = { ...state }
             newState[action.song.id] = action.song
-            return newState;}
+            return newState;
         default:
             return state;
     }
