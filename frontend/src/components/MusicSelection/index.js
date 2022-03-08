@@ -5,14 +5,14 @@ import './MusicSelection.css'
 
 function MusicSelection() {
     const dispatch = useDispatch();
+    const songsObj = useSelector(state => state.songs)
+    const songsArr = Object.values(songsObj)
+    console.log('songs obj', songsObj)
 
     useEffect(() => {
         dispatch(allSongs())
     }, [dispatch])
 
-    const songsObj = useSelector(state => state.songs)
-    const songsArr = Object.values(songsObj)
-    console.log('songs array', songsArr)
 
     return (
         <>

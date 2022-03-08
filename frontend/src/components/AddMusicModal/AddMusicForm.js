@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import newSong from "../../store/songs";
+import { newSong, allSongs } from "../../store/songs";
 import { useDispatch, useSelector } from "react-redux";
 
 function AddMusicForm() {
@@ -7,16 +7,16 @@ function AddMusicForm() {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState("");
-    const [userId, setUserId] = useState(sessionUser.id)
-    const [errors, setErrors] = useState([]);
-
+    const userId = sessionUser.id
+    // const [errors, setErrors] = useState([]);
+    // console.log("this is the userId", userId)
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const song = { title, url, userId}
-        console.log(song)
-        await dispatch(newSong(song));
+        const song = { title, url, userId }
+        dispatch(newSong(song));
+        dispatch(allSongs());
     };
 
 
@@ -24,9 +24,9 @@ function AddMusicForm() {
     return (
         <form onSubmit={handleSubmit}>
             <ul>
-                {errors.map((error, idx) => (
+                {/* {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
-                ))}
+                ))} */}
             </ul>
             <label>
                 Title
