@@ -6,6 +6,7 @@ import './MusicSelection.css'
 function MusicSelection() {
     const dispatch = useDispatch();
     const songsObj = useSelector(state => state.songs)
+    const sessionUser = useSelector(state => state.session.user);
     const songsArr = Object.values(songsObj)
     console.log('songs obj', songsObj)
 
@@ -15,7 +16,7 @@ function MusicSelection() {
 
 
     return (
-        <>
+        <div className='music-section-block'>
             <h1>Music Selection</h1>
             <div className='music-list-block'>
                 {songsArr.map(song => (
@@ -24,10 +25,12 @@ function MusicSelection() {
                         </span>
                         <span className='atist-name'
                         >{song.User.username}
-                        </span></div>
+                        </span>
+                        {sessionUser.id === song.userId ? <button type='button'>this is the erase button</button> : null}
+                    </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 

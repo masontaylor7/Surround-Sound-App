@@ -38,7 +38,6 @@ export const newSong = (song) => async (dispatch) => {
     const data = await response.json();
     console.log("this is the data", data)
     dispatch(addSong(data));
-    dispatch(getSongs())
     return response;
 }
 
