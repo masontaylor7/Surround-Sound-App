@@ -39,12 +39,10 @@ router.post('/',
         const { title, url } = req.body
         const song = await Song.create({
             title,
-            password,
+            url,
             userId: id,
         })
-        return res.json({
-            song
-        })
+        return res.json(song)
 }))
 
 module.exports = router;

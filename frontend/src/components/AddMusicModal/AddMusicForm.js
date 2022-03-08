@@ -3,24 +3,23 @@ import newSong from "../../store/songs";
 import { useDispatch, useSelector } from "react-redux";
 
 function AddMusicForm() {
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState("");
+    const [userId, setUserId] = useState(sessionUser.id)
     const [errors, setErrors] = useState([]);
-    const sessionUser = useSelector(state => state.session.user);
 
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(newSong({ title, url, userId: sessionUser.id })).catch(
-            async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            }
-        );
+        const song = { title, url, userId}
+        console.log(song)
+        await dispatch(newSong(song));
     };
+
+
 
     return (
         <form onSubmit={handleSubmit}>
