@@ -44,10 +44,14 @@ router.post('/',
         })
         return res.json(specificSong)
     }));
-    
-// router.delete('/:id',
-//     asyncHandler(async (req, res) => {
-//     const
-// }))
+
+router.delete('/:songId',
+    asyncHandler(async (req, res) => {
+        const { songId } = req.params;
+
+        const song = await Song.findByPk(songId);
+        song.destroy();
+        return res.json(song);
+}))
 
 module.exports = router;
