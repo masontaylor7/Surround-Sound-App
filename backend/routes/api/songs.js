@@ -56,13 +56,13 @@ router.delete('/:songId',
 
 router.put('/:songId',
     asyncHandler(async (req, res) => {
-        const { title, url, userId } = req.body
+        const { newTitle, newUrl, userId } = req.body
         const { songId } = req.params;
 
         const song = await Song.findByPk(songId, {
             include: User
         });
-        song.update({title, url, userId})
+        song.update({title: newTitle, url: newUrl, userId})
         return res.json(song)
     })
 )

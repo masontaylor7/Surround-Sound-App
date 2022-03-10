@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-export function EditSongForm({ title, url, songId }) {
+export function EditSongForm({ title, url, songId, showModalProp }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [newTitle, setNewTitle] = useState(title);
@@ -16,6 +16,7 @@ export function EditSongForm({ title, url, songId }) {
         const song = { newTitle, newUrl, userId, songId }
         // console.log(song, 'frontenddddddd')
         dispatch(editSong(song));
+        showModalProp(false);
     };
 
 
