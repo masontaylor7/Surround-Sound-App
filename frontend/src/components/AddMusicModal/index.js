@@ -11,7 +11,7 @@ function AddMusicModal() {
             <button onClick={() => setShowModal(true)}>Publish a New Song</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <AddMusicForm prop={showModal, setShowModal}/>
+                    <AddMusicForm showModalProp={setShowModal}/>
                 </Modal>
             )}
         </div>

@@ -52,6 +52,19 @@ router.delete('/:songId',
         const song = await Song.findByPk(songId);
         song.destroy();
         return res.json(song);
-}))
+    }));
+
+router.put('/:songId',
+    asyncHandler(async (req, res) => {
+        const { title, url, userId } = req.body
+        const { songId } = req.params;
+
+        const song = await Song.findByPk(songId, {
+            include: User
+        });
+        song.update({title, url, userId})
+        return res.json(song)
+    })
+)
 
 module.exports = router;

@@ -3,6 +3,14 @@ import { csrfFetch } from './csrf';
 const GET_SONGS = 'songs/getSongs';
 const ADD_SONG = 'songs/addSong';
 const REMOVE_SONG = 'songs/removeSong'
+const EDIT_SONG = 'songs/editOneSong'
+
+export const editOneSong = (song) => {
+    return {
+        type: EDIT_SONG,
+        song
+    }
+}
 
 export const getSongs = (songs) => {
     return {
@@ -63,6 +71,21 @@ export const deleteSong = (songId) => async (dispatch) => {
     };
 };
 
+export const editSong = (song) => async (dispatch) => {
+
+    const response = await csrfFetch(`/api/songs/${song.songId}`, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(song)
+    });
+
+    if (response.ok) {
+        const newSong = await response.json();
+        dispatch(editOneSong(newSong));
+        return newSong;
+    }
+}
+
 
 const initialState = {}
 
@@ -74,6 +97,10 @@ const songsReducer = (state = initialState, action) => {
             action.songs.map(song => {
                 return newState[song.id] = song
             });
+            return newState;
+        case EDIT_SONG:
+            newState = { ...state }
+            newState[action.song.id] = action.song
             return newState;
         case ADD_SONG:
             newState = { ...state }
