@@ -1,0 +1,22 @@
+.edit-song-button-block {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.edit-song-button {
+    width: 25px;
+    height: 25px;
+    color: white;
+    margin-left: 8px;
+    margin-right: 8px;
+
+}
+
+.edit-song-button:hover {
+    cursor: pointer;
+}
+
+.edit-song-button:active {
+    color: #beff46;
+}

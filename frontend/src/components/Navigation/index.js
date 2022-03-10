@@ -12,7 +12,9 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <div className='nav-right-side-block'>
+                <ProfileButton user={sessionUser} />
+            </div>
         );
     } else {
         sessionLinks = (
@@ -25,13 +27,23 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className='nav-bar'>
-            <ul>
-                <li>
-                    <NavLink exact to="/">Home</NavLink>
-                    <NavLink to='/music'>Music</NavLink>
-                    {isLoaded && sessionLinks}
-                </li>
-            </ul>
+            <div className='nav-left-side-block'>
+                <div className='logo-block'>
+                    <img className='speaker-png' src='https://cdn.iconscout.com/icon/free/png-256/speaker-1751756-1489642.png' alt=''/>
+                </div>
+                <div className='links-and-app-name'>
+                    <div className='nav-link-block'>
+                        <NavLink className='nav-link home-nav-link' exact to="/">Home</NavLink>
+                        <NavLink className='nav-link music-nav-link' to='/music'>Browse Music</NavLink>
+                        {sessionUser ? <NavLink className='nav-link my-music-link' to={`/users/${sessionUser.id}`}>My Music</NavLink> : null}
+                        {sessionUser ? <NavLink className='nav-link my-playlists-link' to={`/users/${sessionUser.id}`}>My Playlists</NavLink> : null}
+                    </div>
+                    <div className='surround-sound-text'><span className='surround-text'>Surround</span><span className='sound-text'>Sound</span></div>
+                </div>
+            </div>
+            <div className='right-side-block'>
+                {isLoaded && <div className='sessionLinks'>{sessionLinks}</div>}
+            </div>
         </div>
     );
 }

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { newSong } from "../../store/songs";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom'
 
-function AddMusicForm({showModalProp}) {
+function AddMusicForm({ showModalProp }) {
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
@@ -14,7 +16,9 @@ function AddMusicForm({showModalProp}) {
         e.preventDefault();
         const song = { title, url, userId }
         dispatch(newSong(song));
+        history.push('/music')
         showModalProp(false);
+
     };
 
 

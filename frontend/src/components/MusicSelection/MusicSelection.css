@@ -1,5 +1,127 @@
+
 .music-section-block {
+    margin-top: 20px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 33%, rgb(110, 0, 0) 84%);
+}
+
+h1 {
+    color: white;
+}
+
+.music-list-block {
+    padding: 50px;
+    border-radius: 10px;
+    border: 5px solid black;
+    width: 50%;
+    background: rgb(105,9,183);
+    background: linear-gradient(90deg, rgba(105,9,183,1) 0%, rgba(51,4,90,1) 75%, rgba(0,0,0,1) 100%);
+}
+
+.song-title {
+    color: white;
+    font-size: 24px;
+}
+
+
+.single-song-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    height: 60px;
+    margin-bottom: 5px;
+}
+
+.single-song-left-side-block {
+    display: flex;
+    align-items: center;
+}
+
+.song-info-block {
+    padding-right: 20px;
+    border-right: 1px solid white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.atist-name-block {
+    justify-content: flex-end;
+    color: white;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+.artist-text {
+    color:white;
+    font-weight: 300;
+}
+
+.song-right-side-button-block {
+    display: flex;
+    align-items: center;
+
+}
+
+.play-song-button-block {
+    background: none;
+    border: none;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.delete-song-button-block,
+.add-to-playlist-button-block {
+    background: none;
+    border: none;
+}
+
+.play-song-button {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.play-song-button:hover,
+.delete-button-button:hover,
+.add-to-playlist-button:hover {
+    cursor: pointer;
+}
+
+
+.delete-button-button {
+    width: 30px;
+    height: 30px;
+    color: #ff222d;
+}
+
+.delete-button-button:active,
+.add-to-playlist-button:active,
+.play-song-button:active {
+    color: #beff46;
+}
+
+.add-to-playlist-button {
+    width: 25px;
+    height: 25px;
+    color: white;
+}
+
+.add-music-block {
+    margin-bottom: 20px;
+}
+
+.sound-board{
+    height: 100px;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    width: 100px;
+    filter: invert(1);
 }

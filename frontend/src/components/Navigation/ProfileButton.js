@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
+import { RiUserReceivedFill, RiUserSharedFill } from 'react-icons/ri'
+import './Navigation.css';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -31,17 +32,15 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
+            <button className='profile-button-block' onClick={openMenu}>
+                {showMenu === false ? <RiUserReceivedFill className="profile-open-icon" /> : <RiUserSharedFill className="profile-open-icon" />}
+
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li><NavLink to={`/users/${user.id}`}>My Music</NavLink></li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
+                <div className="profile-dropdown">
+                    <div className="user-text">user: {user.username}</div>
+                    <button className='logout-button' onClick={logout}><p className="logout-text">Log Out</p></button>
+                </div>
             )}
         </>
     );

@@ -6,19 +6,19 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <div className='footer-block'>
-            <div className='logo-block'>
-                <div className='footer-logo'>
-                    <p>footer logo</p>
+            <div className='lower-footer-block'>
+                <div className='logo-block'>
+                    <div className='footer-logo'>
+                        <p>footer logo</p>
+                    </div>
+                </div>
+                <div className='audio-player-block'>
+                    <AudioPlayer />
+                </div>
+                <div className='footer-right-block'>
+                    <div className='footer-right-block'>footer right</div>
                 </div>
             </div>
-            <div className='audio-player-block'>
-                <AudioPlayer />
-            </div>
-            <div className='footer-right-block'>
-                <div>footer right</div>
-            </div>
-        </div>
     );
 }
 

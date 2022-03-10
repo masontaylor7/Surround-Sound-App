@@ -1,8 +1,20 @@
-.music-list-block {
-    border: 1px solid red;
-    width: 50%;
+
+
+.main-body {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
 }
 
-.song-title {
-    font-size: 24px;
+.welcome {
+    position: absolute;
+    color: white;
+    z-index: 2;
+}
+
+.crowd-png {
+    position: absolute;
+    margin-bottom: 100px;
+    width: 100%;
+    bottom: 0;
 }

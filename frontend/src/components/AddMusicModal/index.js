@@ -8,7 +8,7 @@ function AddMusicModal() {
 
     return (
         <div>
-            <button onClick={() => setShowModal(true)}>Publish a New Song</button>
+            <button className='publish-button-block' onClick={() => setShowModal(true)}><p className='publish-text'>Publish a New Song</p></button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <AddMusicForm showModalProp={setShowModal}/>

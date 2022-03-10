@@ -1,4 +1,6 @@
 .music-page-body {
+    display: flex;
+    margin-top: 85px;
     margin-bottom: 105px;
-    background-color: #eae2b7;
+    background: rgb(255, 255, 255);
 }

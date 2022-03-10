@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import MusicPage from "./components/MusicPage";
 import ProfilePage from "./components/ProfilePage";
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="main-project-body">
       <Navigation isLoaded={isLoaded} className='nav-bar'/>
       {isLoaded && (
         <Switch>

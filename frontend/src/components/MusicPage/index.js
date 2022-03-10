@@ -1,5 +1,4 @@
 import React from 'react';
-import AddMusicModal from '../AddMusicModal';
 import MusicSelection from '../MusicSelection';
 import './MusicPage.css'
 
@@ -7,9 +6,6 @@ import './MusicPage.css'
 function MusicPage() {
     return (
         <div className='music-page-body'>
-            <h1>Browse music, or add your own!</h1>
-
-            <AddMusicModal />
             <MusicSelection />
         </div>
     )

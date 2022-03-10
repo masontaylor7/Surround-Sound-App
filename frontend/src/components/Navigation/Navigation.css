@@ -1,10 +1,162 @@
 .nav-bar {
     position: fixed;
-    height: 80px;
+    height: 100px;
     width: 100%;
     top: 0;
     left: 0;
-    border-bottom: 1px solid black;
-    background-color: #ffba08;
-    z-index: 2;
+    border-bottom: 5px solid black;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(105,9,183);
+    background: linear-gradient(90deg, rgba(105,9,183,1) 0%, rgba(51,4,90,1) 75%, rgba(0,0,0,1) 100%);
+}
+
+.right-side-block {
+
+    margin-right: 12%;
+}
+
+.nav-right-side-block {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left-side-block {
+    display: flex;
+    align-items: center;
+    margin-left: 12%;
+}
+
+.speaker-png {
+    height: 80px;
+    margin-bottom: -5px;
+    margin-right: 10px;
+    filter: invert(1);
+}
+
+.nav-link {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+.nav-link-block {
+    margin-bottom: 10px;
+}
+
+.surround-sound-text {
+    font-size: 25px;
+    margin-bottom: -30px;
+    margin-top: 4px;
+    margin-left: 10px;
+    font-weight: 800;
+}
+
+.sound-text {
+    color: black;
+}
+
+.links-and-app-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-link:active,
+.login-text:active,
+.signup-text:active {
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.541);
+    border: 2px solid rgba(255, 255, 255, 0.541);
+}
+
+.profile-button-block,
+.login-button-block,
+.signup-button-block {
+    padding: 0;
+    margin-right: 0;
+    background: none;
+    border: none;
+}
+
+.login-button-block:hover,
+.signup-button-block:hover {
+    cursor: pointer;
+}
+
+
+.login-text,
+.signup-text {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+
+.profile-open-icon {
+    height: 40px;
+    width: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.profile-open-icon:active {
+    color: rgba(255, 255, 255, 0.541);
+}
+
+.profile-dropdown {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-button {
+    background-color: #6909B6;
+    box-shadow: 0px 0px 10px 4px rgb(129, 0, 0);
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 25px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logout-button:active {
+    background-color: #6809b6af;
+    box-shadow: none;
+}
+
+.my-music-text {
+    text-decoration: none;
+    color: white;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.logout-text,
+.user-text {
+    color: white;
+    font-size: 15px;
+}
+
+.user-text {
+    font-weight: 600;
+    margin-bottom: 10px;
 }
