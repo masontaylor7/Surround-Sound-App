@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
+import "./index.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import MusicPage from "./components/MusicPage";
 import ProfilePage from "./components/ProfilePage";
-import "./index.css";
+import PlaylistPage from "./components/PlaylistsPage";
+import IndividualPlaylist from "./components/IndividualPlaylist";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,8 +29,14 @@ function App() {
           <Route path='/music'>
             <MusicPage />
           </Route>
-          <Route path='/users/:id'>
+          <Route exact path='/users/:id'>
             <ProfilePage />
+          </Route>
+          <Route exact path='/users/:userId/playlists'>
+            <PlaylistPage />
+          </Route>
+          <Route exact path='/users/:userId/playlists/:playlistId'>
+            <IndividualPlaylist />
           </Route>
           <Route path=''>
             <h2>This Page Does Not Exist</h2>

@@ -12,3 +12,24 @@ html {
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 33%, rgba(110, 0, 0) 84%);
 }
+
+::-webkit-scrollbar {
+    height: 60%;
+    width: 6px;
+    border-radius: 5px;
+    background: rgb(241, 241, 241);
+}
+
+::-webkit-scrollbar-track {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 60%;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3d3d3d;
+}
+
+.main-project-body {
+    margin-top: 100px;
+}

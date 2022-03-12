@@ -1,6 +1,5 @@
 
 .music-section-block {
-    margin-top: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -17,6 +16,7 @@ h1 {
 .music-list-block {
     padding: 50px;
     border-radius: 10px;
+    margin-bottom: 200px;
     border: 5px solid black;
     width: 50%;
     background: rgb(105,9,183);
@@ -41,15 +41,21 @@ h1 {
 .single-song-left-side-block {
     display: flex;
     align-items: center;
+    max-width: 75%;
 }
 
 .song-info-block {
     padding-right: 20px;
     border-right: 1px solid white;
-    width: 100%;
+    width: 95%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.song-title {
+    max-width: 80%;
+    overflow-x: hidden;
 }
 
 .atist-name-block {

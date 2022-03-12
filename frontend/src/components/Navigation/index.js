@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
                         <NavLink className='nav-link home-nav-link' exact to="/">Home</NavLink>
                         <NavLink className='nav-link music-nav-link' to='/music'>Browse Music</NavLink>
                         {sessionUser ? <NavLink className='nav-link my-music-link' to={`/users/${sessionUser.id}`}>My Music</NavLink> : null}
-                        {sessionUser ? <NavLink className='nav-link my-playlists-link' to={`/users/${sessionUser.id}`}>My Playlists</NavLink> : null}
+                        {sessionUser ? <NavLink className='nav-link my-playlists-link' to={`/users/${sessionUser.id}/playlists`}>My Playlists</NavLink> : null}
                     </div>
                     <div className='surround-sound-text'><span className='surround-text'>Surround</span><span className='sound-text'>Sound</span></div>
                 </div>

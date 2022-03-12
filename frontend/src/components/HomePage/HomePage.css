@@ -1,13 +1,17 @@
+.sound-text {
+    color: #beff46;
+}
 
 
 .main-body {
     margin-top: 200px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .welcome {
-    position: absolute;
+    position: relative;
     color: white;
     z-index: 2;
 }
@@ -17,4 +21,14 @@
     margin-bottom: 100px;
     width: 100%;
     bottom: 0;
+}
+
+p {
+    font-weight: 700;
+
+    color: white;
+}
+
+span {
+    color: #beff46;
 }

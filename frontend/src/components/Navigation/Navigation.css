@@ -59,8 +59,12 @@
     font-weight: 800;
 }
 
+.surround-text {
+    color: white;
+}
+
 .sound-text {
-    color: black;
+    color: #beff46;
 }
 
 .links-and-app-name {

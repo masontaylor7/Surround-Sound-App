@@ -9,13 +9,11 @@ function AudioPlayer() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
-    const [volume, setVolume] = useState(0.8);
 
     //references
     const audioPlayer = useRef(); // for our audio component
     const progressBar = useRef(); // reference to progress bar
     const animationRef = useRef(); // animation reference
-    const volumeSlider = useRef(); // volume control
 
     // useEffect
     useEffect((e) => {
@@ -73,16 +71,11 @@ function AudioPlayer() {
         changeRange();
     }
 
-    // const forwardThirty = () => {
-    //     progressBar.current.value = Number(progressBar.current.value + 30)
-    //     changeRange();
-    // }
-
     return (
         <div className='footer'>
             <div className='audio-player-block'>
 
-                <audio ref={audioPlayer} src='https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' preload='metadata' volume={volume}></audio>
+                <audio ref={audioPlayer} src='https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' preload='metadata'></audio>
                 <button className='forwardBackward' onClick={backThirty}><MdReplay30 className='backwards-30-button'/></button>
                 <button className='playPause-block' onClick={togglePlayPause}>
                     {isPlaying ? <GiPauseButton className='pause-button'/> : <MdPlayCircleOutline className='play-button'/>}

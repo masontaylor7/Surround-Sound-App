@@ -9,6 +9,7 @@ import { GiSoundWaves } from 'react-icons/gi'
 import AddMusicModal from '../AddMusicModal';
 
 import './MusicSelection.css'
+import AddSongToPlaylistModal from '../AddSongToPlaylistModal';
 
 function MusicSelection() {
     const history = useHistory();
@@ -61,7 +62,7 @@ function MusicSelection() {
 
                             {sessionUser && sessionUser.id === song.userId ? <EditSongFormModal title={song.title} url={song.url} songId={song.id} /> : null}
 
-                            {sessionUser ? <button className='add-to-playlist-button-block'><AiFillPlusSquare className='add-to-playlist-button'/></button> : null}
+                            {sessionUser ? <AddSongToPlaylistModal songId={song.id} /> : null}
                         </span>
                     </div>
                 ))}
