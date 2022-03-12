@@ -16,6 +16,10 @@
     z-index: 2;
 }
 
+.list-block {
+    font-size: 24px;
+}
+
 .crowd-png {
     position: absolute;
     margin-bottom: 100px;
