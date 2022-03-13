@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './IndividualPlaylist.css'
+import playlistReducer from '../../store/playlists';
 
 
 
@@ -13,7 +14,8 @@ function IndividualPlaylist() {
     return (
         <div className='individual-playlist-block'>
             <h1>IndividualPlaylist page</h1>
-            <NavLink to={`/users/${userId}/playlists`}className='navlink'>Back to playlists</NavLink>
+            <NavLink to={`/users/${userId}/playlists`} className='navlink'>Back to playlists</NavLink>
+
         </div>
     )
 }

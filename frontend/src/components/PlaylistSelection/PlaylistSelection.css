@@ -7,10 +7,10 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-bottom: 200px;
 }
 
 .playlist-list-block {
+    margin-bottom: 200px;
     display: flex;
     justify-content: center;
     max-width: 60%;
@@ -31,7 +31,42 @@
     align-items: center;
 }
 
+.lower-single-playlist-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlist-button-block {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.playlist-name-text {
+    text-decoration: none;
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+.delete-button-button {
+    padding: 0;
+    width: 25px;
+    height: 25px;
+}
+
+.delete-playlist-button-block {
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+
 .playlist-image {
     width: 200px;
     height: 200px;
+}
+
+.add-playlist-block {
+    margin-bottom: 20px;
 }

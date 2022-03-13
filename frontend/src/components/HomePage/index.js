@@ -6,8 +6,8 @@ function HomePage() {
         <div className='main-body'>
             <h1 className='welcome'>Welcome to Surround<span className='sound-text'>Sound</span>!</h1>
             <div className='list-block'>
-                <p>A place for your own <span>creations</span>,</p>
-                <p>where you can ustomize <span>playlists</span> to <div>save your favorite tracks,</div></p>
+                <p>Upload <span>songs</span></p>
+                <p>Customize <span>playlists</span></p>
                 <p>Discover new <span>music</span>!</p>
             </div>
 

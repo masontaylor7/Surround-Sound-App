@@ -32,7 +32,7 @@ function AddSongToPlaylistForm({ showModalProp, songId }) {
                             <div className="text playlist-name">{playlist.name}</div>
                         </div>
                         <div className="right-side-block">
-                            <div className="text playlist-private">{playlist.private ? <p>private</p> : <p>public</p>}</div>
+                            <div className="text playlist-private">{playlist.private ? <p className="private-public-text">private</p> : <p className="private-public-text">public</p>}</div>
                         </div>
                     </div>
                 ))}
