@@ -33,7 +33,7 @@ function AddSongToPlaylistForm({ showModalProp, songId }) {
                     <button type='button' className="close-button-block" onClick={closeAddPlaylist}><AiFillCloseSquare className="icon close-icon" /></button>
                 </div>
                 {playlistArr?.map(playlist => (
-                    <div key={playlist.id} className='individual-playlist-block'>
+                    <div key={playlist.id} className='individual-choice-playlist-block'>
                         <div className="left-side-block">
                             <button type='button' className="check-icon-button-block" onClick={() => addSongFunc(songId, playlist.id)}>
                             <div className="icon-div"><FiCheckSquare className="icon check-icon" />

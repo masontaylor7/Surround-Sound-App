@@ -10,13 +10,13 @@
     width: 500px;
     padding: 30px;
     border-radius: 25px;
-    height: 600px;
+    height: 300px;
     overflow-y: auto;
 
 }
 
 
-.individual-playlist-block {
+.individual-choice-playlist-block {
     display: flex;
     align-items: center;
     justify-content: space-between;
