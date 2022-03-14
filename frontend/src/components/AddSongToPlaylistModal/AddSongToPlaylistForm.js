@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { myPlaylists } from '../../store/playlists';
+import { addSongToPlaylist } from '../../store/playlist-songs';
 import { FiCheckSquare } from 'react-icons/fi'
 import { AiFillCloseSquare } from 'react-icons/ai'
 
@@ -19,6 +20,12 @@ function AddSongToPlaylistForm({ showModalProp, songId }) {
         showModalProp(false)
     }
 
+    function addSongFunc(songId, playlistId) {
+        const entry = {songId, playlistId}
+        dispatch(addSongToPlaylist(entry))
+        showModalProp(false)
+    }
+
     return (
         <div className="add-song-to-playlist-modal">
             <div className="modal-inner-block">
@@ -28,7 +35,10 @@ function AddSongToPlaylistForm({ showModalProp, songId }) {
                 {playlistArr?.map(playlist => (
                     <div key={playlist.id} className='individual-playlist-block'>
                         <div className="left-side-block">
-                            <div className="icon-div"><FiCheckSquare className="icon check-icon" /></div>
+                            <button type='button' className="check-icon-button-block" onClick={() => addSongFunc(songId, playlist.id)}>
+                            <div className="icon-div"><FiCheckSquare className="icon check-icon" />
+                            </div>
+                            </button>
                             <div className="text playlist-name">{playlist.name}</div>
                         </div>
                         <div className="right-side-block">

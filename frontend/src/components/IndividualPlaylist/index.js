@@ -1,20 +1,32 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { allSongsInPlaylist } from '../../store/playlist-songs';
 import './IndividualPlaylist.css'
-import playlistReducer from '../../store/playlists';
 
 
 
 function IndividualPlaylist() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const playlistSongsObj = useSelector(state => state.playlistSongs)
+    const playlistSongsArr = Object.values(playlistSongsObj)
     const userId = sessionUser.id
+    const { playlistId } = useParams()
+
+    useEffect(() => {
+        dispatch(allSongsInPlaylist(playlistId))
+    }, [dispatch])
 
     return (
         <div className='individual-playlist-block'>
             <h1>IndividualPlaylist page</h1>
             <NavLink to={`/users/${userId}/playlists`} className='navlink'>Back to playlists</NavLink>
+            <div className='each-song-in-playlist'>
+                {playlistSongsArr?.map(entry => (
+                    <div key={entry.songId}>{entry}</div>
+                ))}
+            </div>
 
         </div>
     )

@@ -23,7 +23,7 @@ const validateSongEntry = [
 router.get('/',
     asyncHandler(async (req, res) => {
         const songs = await Song.findAll({
-            include: User
+            include: User,
         });
         return res.json({
             songs

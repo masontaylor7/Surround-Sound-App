@@ -35,7 +35,8 @@
 }
 
 .close-button-block,
-.add-song-button-block {
+.add-song-button-block,
+.check-icon-button-block {
     background: none;
     border: none;
     cursor: pointer;

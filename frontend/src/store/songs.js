@@ -44,7 +44,6 @@ export const allSongs = () => async(dispatch) => {
 }
 
 export const newSong = (song) => async (dispatch) => {
-    console.log('inside of newSong thunk', song)
     const response = await csrfFetch('/api/songs', {
         method: "POST",
         headers: {
@@ -59,7 +58,6 @@ export const newSong = (song) => async (dispatch) => {
 }
 
 export const deleteSong = (songId) => async (dispatch) => {
-    console.log('inside of the delete thunk', songId)
     const response = await csrfFetch(`/api/songs/${songId}`, {
         method: "DELETE",
         body: JSON.stringify({songId})
@@ -72,7 +70,6 @@ export const deleteSong = (songId) => async (dispatch) => {
 };
 
 export const editSong = (song) => async (dispatch) => {
-
     const response = await csrfFetch(`/api/songs/${song.songId}`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json'},
