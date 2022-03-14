@@ -20,3 +20,36 @@
 .edit-song-button:active {
     color: #beff46;
 }
+
+.edit-song-form-block {
+    max-height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 5px solid rgb(105,9,183);
+    background-color: rgba(24, 24, 24, 0.678);
+    width: 500px;
+    padding: 30px;
+    border-radius: 25px;
+    height: 600px;
+    overflow-y: auto;
+}
+
+.update-song-button {
+    background: none;
+    height: 45px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.update-song-button:active {
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.541);
+    border: 2px solid rgba(255, 255, 255, 0.541);
+}

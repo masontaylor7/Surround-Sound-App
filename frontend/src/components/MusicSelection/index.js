@@ -5,27 +5,31 @@ import { allSongs, deleteSong } from '../../store/songs';
 import EditSongFormModal from '../EditSongFormModal';
 import { AiFillPlayCircle, AiFillPlusSquare } from 'react-icons/ai'
 import { TiDelete } from 'react-icons/ti'
+import { CgPlayListAdd } from 'react-icons/cg'
 import { GiSoundWaves } from 'react-icons/gi'
 import AddMusicModal from '../AddMusicModal';
 
 import './MusicSelection.css'
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal';
 
-function MusicSelection() {
+function MusicSelection({ setTitle, setUrl }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const songsObj = useSelector(state => state.songs)
     const sessionUser = useSelector(state => state.session.user);
     const songsArr = Object.values(songsObj)
-    const [title, setTitle] = useState("");
-    const [url, setUrl] = useState("");
+    // const [newTitle, setNewTitle] = useState("");
+    // const [newUrl, setNewUrl] = useState("");
 
     useEffect(() => {
         dispatch(allSongs())
     }, [dispatch])
 
-    const playClick = (songId) => {
-        console.log('click play button working', songId)
+    const playClick = (songTitle, songUrl) => {
+        // setNewTitle(songTitle);
+        // setNewUrl(songUrl);
+        setTitle(songTitle)
+        setUrl(songUrl)
     }
 
     return (
@@ -40,7 +44,7 @@ function MusicSelection() {
                     <div key={song.id} className='single-song-block'>
                         <span className='single-song-left-side-block'>
                             <span className='play-block'>
-                                <button type='button' className='play-song-button-block' onClick={() => playClick(song.id)}><AiFillPlayCircle className='play-song-button' /></button>
+                                <button type='button' className='play-song-button-block' onClick={() => playClick(song.title, song.url)}><CgPlayListAdd className='play-song-button' /></button>
                             </span>
                             <span className='song-info-block'>
                                 <span className='song-title'>{song.title}

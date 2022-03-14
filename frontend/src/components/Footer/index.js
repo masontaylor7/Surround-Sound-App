@@ -4,7 +4,7 @@ import React from 'react';
 import AudioPlayer from '../AudioPlayer';
 import './Footer.css';
 
-function Footer() {
+function Footer({title, url}) {
     return (
         <div className='lower-footer-block'>
 
@@ -13,7 +13,7 @@ function Footer() {
             </div>
 
             <div className='audio-player-block'>
-                <AudioPlayer />
+                <AudioPlayer title={title} url={url}/>
             </div>
             <div className='footer-right-block'>
                 <div className='footer-right-block'>

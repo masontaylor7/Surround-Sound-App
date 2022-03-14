@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MdReplay30, MdPlayCircleOutline } from 'react-icons/md'
 import { GiPauseButton } from 'react-icons/gi'
+
 import "./AudioPlayer.css"
 
 
-function AudioPlayer() {
+function AudioPlayer({ title, url }) {
     //state
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
@@ -75,10 +76,10 @@ function AudioPlayer() {
         <div className='footer'>
             <div className='audio-player-block'>
 
-                <audio ref={audioPlayer} src='https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' preload='metadata'></audio>
-                <button className='forwardBackward' onClick={backThirty}><MdReplay30 className='backwards-30-button'/></button>
+                <audio ref={audioPlayer} src={url} preload='metadata'></audio>
+                <button className='forwardBackward' onClick={backThirty}><MdReplay30 className='backwards-30-button' /></button>
                 <button className='playPause-block' onClick={togglePlayPause}>
-                    {isPlaying ? <GiPauseButton className='pause-button'/> : <MdPlayCircleOutline className='play-button'/>}
+                    {isPlaying ? <GiPauseButton className='pause-button' /> : <MdPlayCircleOutline className='play-button' />}
                 </button>
 
 
@@ -86,13 +87,19 @@ function AudioPlayer() {
                 <div className='currentTime'>{calculateTime(currentTime)}</div>
 
                 { /* progress bar*/}
+                <div className='song-name-and-progress-bar'>
+
+                <div className='name-block'>{title}</div>
                 <input type='range' className='progressBar' defaultValue='0' ref={progressBar} onChange={changeRange} />
+                </div>
+
 
                 {/* duration */}
                 <div className='duration'>{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
 
                 {/* Volume input */}
                 {/* <input type='range' className='volumeSlider' defaultValue={volume} ref={volumeSlider} onChange={(e) => setVolume(e.target.value)} /> */}
+
 
             </div>
         </div>

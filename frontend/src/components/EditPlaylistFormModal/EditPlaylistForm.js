@@ -24,36 +24,41 @@ function EditPlaylistForm({ name, imageUrl, notViewable, playlistId, showModalPr
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Name
-                <input
-                    type="text"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                image URL
-                <input
-                    type="text"
-                    value={newImageUrl}
-                    onChange={(e) => setNewImageUrl(e.target.value)}
-                />
-            </label>
-            <label>
-                Private:
-                <select
-                    value={updateNotViewable}
-                    onChange={(e) => setUpdateNotViewable(e.target.value)}
-                    required>
-                    <option value={true}>private</option>
-                    <option value={false}>public</option>
-                </select>
-            </label>
-            <button type="submit">Update Playlist</button>
-        </form>
+        <div className="edit-playlist-form-block">
+
+            <form onSubmit={handleSubmit}>
+                <label className="label-and-input">
+                    <p>Name</p>
+                    <input
+                        type="text"
+                        value={newName}
+                        onChange={(e) => setNewName(e.target.value)}
+                        required
+                    />
+                </label>
+                <label className="label-and-input">
+                    <p>Image URL</p>
+                    <input
+                        type="text"
+                        value={newImageUrl}
+                        onChange={(e) => setNewImageUrl(e.target.value)}
+                    />
+                </label>
+                <label className="label-and-input">
+                    <p>Private or Public</p>
+                    <select
+                        value={updateNotViewable}
+                        onChange={(e) => setUpdateNotViewable(e.target.value)}
+                        required>
+                        <option value={true}>private</option>
+                        <option value={false}>public</option>
+                    </select>
+                </label>
+                <div className="update-playlist-button-block">
+                    <button type="submit" className="update-playlist-button">Update Playlist</button>
+                </div>
+            </form>
+        </div>
     );
 }
 

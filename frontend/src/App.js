@@ -14,6 +14,8 @@ import IndividualPlaylist from "./components/IndividualPlaylist";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [title, setTitle] = useState('')
+  const [url, setUrl] = useState('')
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -27,7 +29,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path='/music'>
-            <MusicPage />
+            <MusicPage setTitle={setTitle} setUrl={setUrl}/>
           </Route>
           <Route exact path='/users/:id'>
             <ProfilePage />
@@ -43,7 +45,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      <Footer />
+      <Footer title={title} url={url}/>
     </div>
   );
 }

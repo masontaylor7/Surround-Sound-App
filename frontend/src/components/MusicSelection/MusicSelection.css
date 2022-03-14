@@ -16,8 +16,8 @@ h1 {
 .music-list-block {
     padding: 50px;
     border-radius: 10px;
-    margin-bottom: 200px;
     border: 5px solid black;
+    margin-bottom: 200px;
     width: 50%;
     background: rgb(105,9,183);
     background: linear-gradient(90deg, rgba(105,9,183,1) 0%, rgba(51,4,90,1) 75%, rgba(0,0,0,1) 100%);

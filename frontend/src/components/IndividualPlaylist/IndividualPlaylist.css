@@ -1,5 +1,8 @@
 .individual-playlist-block {
-
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .navlink {

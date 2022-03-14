@@ -20,7 +20,8 @@ function IndividualPlaylist() {
 
     return (
         <div className='individual-playlist-block'>
-            <h1>IndividualPlaylist page</h1>
+            <h1>Saved Music</h1>
+            <img className='sound-board' src='https://www.shareicon.net/data/256x256/2016/08/18/815896_music_512x512.png' />
             <NavLink to={`/users/${userId}/playlists`} className='navlink'>Back to playlists</NavLink>
             <div className='each-song-in-playlist'>
                 {playlistSongsArr?.map(entry => (

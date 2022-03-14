@@ -3,10 +3,10 @@ import MusicSelection from '../MusicSelection';
 import './MusicPage.css'
 
 
-function MusicPage() {
+function MusicPage({setTitle, setUrl}) {
     return (
         <div className='music-page-body'>
-            <MusicSelection />
+            <MusicSelection setTitle={setTitle} setUrl={setUrl}/>
         </div>
     )
 }

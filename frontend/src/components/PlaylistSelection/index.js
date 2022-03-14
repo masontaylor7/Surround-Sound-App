@@ -24,7 +24,7 @@ function PlaylistSelection() {
 
     return (
         <div className='playlists-selection-block'>
-            <h1>Hello from playlists component</h1>
+            <h1>Your Playlists</h1>
             <img className='sound-board' src='https://www.shareicon.net/data/256x256/2016/08/18/815896_music_512x512.png' />
             <div className='add-playlist-block'>
                 <AddPlaylistModal className='' />
@@ -32,12 +32,12 @@ function PlaylistSelection() {
             <div className='playlist-list-block'>
                 {playlistArr?.map(playlist => (
                     <div key={playlist.id} className='single-playlist-block'>
-                        <NavLink to={`/users/${userId}/playlists/${playlist.id}`}>
+                        <NavLink to={`/users/${userId}/playlists/${playlist.id}`} playlistName={playlist.name}>
                             <div className='playlist-image'><img className='playlist-image' src={playlist.imageUrl === '' ? 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png' : playlist.imageUrl} /></div>
                         </NavLink>
                         <div className='lower-single-playlist-block'>
 
-                            <span><NavLink className='text playlist-name-text' to={`/users/${userId}/playlists/${playlist.id}`}>{playlist.name}</NavLink>
+                            <span><NavLink className='text playlist-name-text' to={`/users/${userId}/playlists/${playlist.id}`} playlistName={playlist.name}>{playlist.name}</NavLink>
                             </span>
 
                             <span className='playlist-button-block'>

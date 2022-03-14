@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { createPlaylist } from "../../store/playlists";
+import './AddPlaylistForm.css'
 
 function AddPlaylistForm({ showModalProp }) {
     const history = useHistory();
@@ -25,36 +26,41 @@ function AddPlaylistForm({ showModalProp }) {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Name
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                image URL
-                <input
-                    type="text"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                />
-            </label>
-            <label>
-                Private:
-                <select
-                    value={notViewable}
-                    onChange={(e) => setNotViewable(e.target.value)}
-                    required>
-                    <option value={true}>private</option>
-                    <option value={false}>public</option>
-                </select>
-            </label>
-            <button type="submit">Create Playlist</button>
-        </form>
+        <div className="add-playlist-inner-form-block">
+
+            <form onSubmit={handleSubmit}>
+                <label className="label-and-input">
+                    <p>Name</p>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                </label>
+                <label className="label-and-input">
+                    <p>Image URL</p>
+                    <input
+                        type="text"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                    />
+                </label>
+                <label className="label-and-input">
+                    <p>Private or Public</p>
+                    <select
+                        value={notViewable}
+                        onChange={(e) => setNotViewable(e.target.value)}
+                        required>
+                        <option value={true}>private</option>
+                        <option value={false}>public</option>
+                    </select>
+                </label>
+                <div className="button-block">
+                    <button type="submit" className="create-playlist-submit-button">Create Playlist</button>
+                </div>
+            </form>
+        </div>
     );
 }
 
