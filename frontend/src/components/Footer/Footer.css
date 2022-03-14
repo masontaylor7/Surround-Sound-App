@@ -30,7 +30,7 @@ span {
     height: 100px;
 }
 
-.speaker-img-left:active {
+/* .speaker-img-left:active {
     margin-top: -50px;
     margin-right: 8%;
     height: 200px;
@@ -39,4 +39,4 @@ span {
 .speaker-img-right:active {
     margin-top: -50px;
     height: 200px;
-}
+} */

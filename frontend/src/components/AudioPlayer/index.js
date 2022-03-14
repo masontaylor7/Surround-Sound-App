@@ -95,7 +95,7 @@ function AudioPlayer({ title, url }) {
 
 
                 {/* duration */}
-                <div className='duration'>{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
+                <div className='duration'>{(duration && !isNaN(duration)) ? calculateTime(duration) : null}</div>
 
                 {/* Volume input */}
                 {/* <input type='range' className='volumeSlider' defaultValue={volume} ref={volumeSlider} onChange={(e) => setVolume(e.target.value)} /> */}

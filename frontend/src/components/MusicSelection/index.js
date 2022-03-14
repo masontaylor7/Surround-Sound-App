@@ -6,7 +6,7 @@ import EditSongFormModal from '../EditSongFormModal';
 import { AiFillPlayCircle, AiFillPlusSquare } from 'react-icons/ai'
 import { TiDelete } from 'react-icons/ti'
 import { CgPlayListAdd } from 'react-icons/cg'
-import { GiSoundWaves } from 'react-icons/gi'
+import { FiPlayCircle } from 'react-icons/fi'
 import AddMusicModal from '../AddMusicModal';
 
 import './MusicSelection.css'
@@ -44,7 +44,7 @@ function MusicSelection({ setTitle, setUrl }) {
                     <div key={song.id} className='single-song-block'>
                         <span className='single-song-left-side-block'>
                             <span className='play-block'>
-                                <button type='button' className='play-song-button-block' onClick={() => playClick(song.title, song.url)}><CgPlayListAdd className='play-song-button' /></button>
+                                <button type='button' className='play-song-button-block' onClick={() => playClick(song.title, song.url)}><FiPlayCircle className='play-song-button' /></button>
                             </span>
                             <span className='song-info-block'>
                                 <span className='song-title'>{song.title}
