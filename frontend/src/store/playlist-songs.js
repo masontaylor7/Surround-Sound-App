@@ -23,7 +23,7 @@ export const allSongsInPlaylist = (playlistId) => async (dispatch) => {
         method: 'GET'
     });
     const data = await response.json();
-    console.log('this is the data in the thunk', data)
+    // console.log('this is the data in the thunk', data)
     dispatch(allPlaylistSongs(data));
     return response;
 }
@@ -39,7 +39,9 @@ export const addSongToPlaylist = (entry) => async(dispatch) => {
         body: JSON.stringify(entry)
     });
     const data = await response.json();
-
+    if (data === null) {
+        return;
+    }
     dispatch(addToPlaylist(data))
     return response
 
@@ -54,7 +56,7 @@ const playlistSongsReducer = (state = initialState, action) => {
         case ALL_PLAYLIST_SONGS:
             newState = { ...state }
             action.entries.map(entry => {
-                return newState[entry] = entry
+                return newState[entry.songId] = entry
             })
             return newState
         case ADD_TO_PLAYLIST:

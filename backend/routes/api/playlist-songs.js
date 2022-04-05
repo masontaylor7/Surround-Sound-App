@@ -24,19 +24,19 @@ router.post('/',
             });
             return res.json(playlistSong);
         } else {
-            return res.json("This song already exists")
+            return null;
         }
     }));
 
 router.get('/:playlistId',
     asyncHandler(async (req, res) => {
         const { playlistId } = req.params;
-        const playlistSongs = await Playlist_Song.findAll({
+        const entries = await Playlist_Song.findAll({
             where: {
                 playlistId
-            },
+            }
         })
-        return res.json(playlistSongs.playlistSongs)
+        return res.json(entries)
     }))
 
 

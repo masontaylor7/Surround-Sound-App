@@ -24,7 +24,7 @@ router.get('/user/:userId',
             where: {
                 userId: userId
             },
-            include: User
+            include: [ User, Song ]
         });
         return res.json({
             playlists
