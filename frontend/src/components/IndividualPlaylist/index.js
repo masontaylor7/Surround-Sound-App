@@ -1,37 +1,83 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { myPlaylists } from '../../store/playlists';
+import { allSongs, deleteSong } from '../../store/songs';
+import EditSongFormModal from '../EditSongFormModal';
+import AddSongToPlaylistModal from '../AddSongToPlaylistModal';
+
+import { TiDelete } from 'react-icons/ti'
+import { FiPlayCircle } from 'react-icons/fi'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+
 import './IndividualPlaylist.css'
 
 
 
-function IndividualPlaylist() {
+function IndividualPlaylist({ setTitle, setUrl }) {
+    const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
     const { playlistId } = useParams()
     const playlist = useSelector(state => state.playlists[+playlistId])
-    console.log('this is the playlist', playlist)
+
 
     const userId = sessionUser.id
-    // console.log('this is the id', playlistId)
 
     useEffect(() => {
+        dispatch(allSongs())
         dispatch(myPlaylists(userId))
     }, [dispatch])
 
-    return (
-        <div className='individual-playlist-block'>
-            <h1>Music</h1>
-            <img className='sound-board' src='https://www.shareicon.net/data/256x256/2016/08/18/815896_music_512x512.png' />
-            <NavLink to={`/users/${userId}/playlists`} className='navlink'>Back to playlists</NavLink>
-            <div className='each-song-in-playlist'>
-                {playlist?.Songs.map(song => (
-                    <div key={song.id}>{song.title}</div>
-                ))}
-            </div>
+    const playClick = (songTitle, songUrl) => {
+        // setNewTitle(songTitle);
+        // setNewUrl(songUrl);
+        setTitle(songTitle)
+        setUrl(songUrl)
+    }
 
+    return (
+        <div className='music-section-block'>
+            <h1>{sessionUser?.username}'s {playlist?.name}</h1>
+            <img className='sound-board' src='https://www.shareicon.net/data/256x256/2016/08/18/815896_music_512x512.png' />
+            <div className='add-music-block'>
+                <NavLink to={`/users/${userId}/playlists`} className='back-to-playlist-button-block'><AiOutlineArrowLeft className='back-arrow-button' /><p className='back-text'>Back To Playlists</p></NavLink>
+            </div>
+            <div className='music-list-block'>
+                    {playlist?.Songs?.map(song => (
+                        <div key={song.id} className='single-song-block'>
+                            <span className='single-song-left-side-block'>
+                                <span className='play-block'>
+                                    <button type='button' className='play-song-button-block' onClick={() => playClick(song.title, song.url)}><FiPlayCircle className='play-song-button' /></button>
+                                </span>
+                                <span className='song-info-block'>
+                                    <span className='song-title'>{song.title}
+                                    </span>
+                                    <span className='atist-name-block'
+                                    ><span className='artist-text'>Aritst: </span>
+                                        {/* {song.User.username} */}
+                                    </span>
+                                </span>
+                            </span>
+
+                            <span className='song-right-side-button-block'>
+                                {sessionUser && sessionUser.id === song.userId ? <button type='button' className='delete-song-button-block' onClick={() => {
+                                    const confirm = window.confirm("Are you sure you want to delete this song?")
+                                    if (confirm === true) {
+                                        dispatch(deleteSong(song.id))
+                                        history.push('/music')
+                                    };
+                                }}><TiDelete className='delete-button-button' /></button> : null}
+
+                                {sessionUser && sessionUser.id === song.userId ? <EditSongFormModal title={song.title} url={song.url} songId={song.id} /> : null}
+
+                                {sessionUser ? <AddSongToPlaylistModal songId={song.id} /> : null}
+                            </span>
+                        </div>
+                    ))}
+            </div>
         </div>
     )
 }

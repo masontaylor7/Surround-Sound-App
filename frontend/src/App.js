@@ -38,7 +38,7 @@ function App() {
             <PlaylistPage />
           </Route>
           <Route exact path='/users/:userId/playlists/:playlistId'>
-            <IndividualPlaylist />
+            <IndividualPlaylist setTitle={setTitle} setUrl={setUrl}/>
           </Route>
           <Route path=''>
             <h2>This Page Does Not Exist</h2>
