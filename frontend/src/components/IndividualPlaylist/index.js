@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { allSongsInPlaylist } from '../../store/playlist-songs';
+import { myPlaylists } from '../../store/playlists';
 import './IndividualPlaylist.css'
 
 
@@ -18,7 +18,7 @@ function IndividualPlaylist() {
     // console.log('this is the id', playlistId)
 
     useEffect(() => {
-        dispatch(allSongsInPlaylist(playlistId))
+        dispatch(myPlaylists(userId))
     }, [dispatch])
 
     return (
@@ -27,9 +27,9 @@ function IndividualPlaylist() {
             <img className='sound-board' src='https://www.shareicon.net/data/256x256/2016/08/18/815896_music_512x512.png' />
             <NavLink to={`/users/${userId}/playlists`} className='navlink'>Back to playlists</NavLink>
             <div className='each-song-in-playlist'>
-                {/* {songs?.map(song => (
-                    <div key={song.songId}>{song.songId}</div>
-                ))} */}
+                {playlist?.Songs.map(song => (
+                    <div key={song.id}>{song.title}</div>
+                ))}
             </div>
 
         </div>
