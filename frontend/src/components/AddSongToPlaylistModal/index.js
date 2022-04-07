@@ -9,7 +9,7 @@ function AddSongToPlaylistModal({ songId }) {
 
     return (
         <div>
-            <button className='add-song-button-block' onClick={() => setShowModal(true)}><AiFillPlusSquare className='add-to-playlist-button' /></button>
+            <button className='add-song-button-block' onClick={() => setShowModal(true)}><AiFillPlusSquare title='add song to playlist' className='add-to-playlist-button' /></button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <AddSongToPlaylistForm songId={songId} showModalProp={setShowModal} />

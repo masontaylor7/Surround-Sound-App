@@ -10,6 +10,7 @@ import AddSongToPlaylistModal from '../AddSongToPlaylistModal';
 import { TiDelete } from 'react-icons/ti'
 import { FiPlayCircle } from 'react-icons/fi'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { MdCancelPresentation } from 'react-icons/md'
 
 import './IndividualPlaylist.css'
 
@@ -69,9 +70,17 @@ function IndividualPlaylist({ setTitle, setUrl }) {
                                         dispatch(deleteSong(song.id))
                                         history.push('/music')
                                     };
-                                }}><TiDelete className='delete-button-button' /></button> : null}
+                                }}><TiDelete title='delete song'  className='delete-button-button' /></button> : null}
 
                                 {sessionUser && sessionUser.id === song.userId ? <EditSongFormModal title={song.title} url={song.url} songId={song.id} /> : null}
+
+                                {sessionUser && sessionUser.id === playlist.userId ? <button type='button' className='remove-song-button-block' onClick={() => {
+                                    const confirm = window.confirm("Are you sure you want to remove this song from your playlist?")
+                                    if (confirm === true) {
+                                        dispatch(deleteSong(song.id))
+                                        history.push('/music')
+                                    };
+                                }}><MdCancelPresentation title='remove song from playlist' className='remove-button' /></button> : null}
 
                                 {sessionUser ? <AddSongToPlaylistModal songId={song.id} /> : null}
                             </span>

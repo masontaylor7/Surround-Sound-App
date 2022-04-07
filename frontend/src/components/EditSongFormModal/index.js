@@ -8,7 +8,7 @@ function EditSongFormModal({ title, url, songId }) {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <button className='edit-song-button-block' onClick={() => setShowModal(true)}><RiEditBoxLine className='edit-song-button'/></button>
+            <button className='edit-song-button-block' onClick={() => setShowModal(true)}><RiEditBoxLine title='edit song'  className='edit-song-button'/></button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditSongForm title={title} url={url} songId={songId} showModalProp={setShowModal}/>

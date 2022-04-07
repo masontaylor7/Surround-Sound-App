@@ -95,7 +95,8 @@ h1 {
 }
 
 .delete-song-button-block,
-.add-to-playlist-button-block {
+.add-to-playlist-button-block,
+.remove-song-button-block {
     background: none;
     border: none;
 }
@@ -108,7 +109,8 @@ h1 {
 
 .play-song-button:hover,
 .delete-button-button:hover,
-.add-to-playlist-button:hover {
+.add-to-playlist-button:hover,
+.remove-button:hover {
     cursor: pointer;
 }
 
@@ -119,9 +121,16 @@ h1 {
     color: #ff222d;
 }
 
+.remove-button {
+    width: 26px;
+    height: 35px;
+    color: white;
+}
+
 .delete-button-button:active,
 .add-to-playlist-button:active,
-.play-song-button:active {
+.play-song-button:active,
+.remove-button:active {
     color: #beff46;
 }
 
