@@ -57,8 +57,8 @@ function IndividualPlaylist({ setTitle, setUrl }) {
                                     <span className='song-title'>{song.title}
                                     </span>
                                     <span className='atist-name-block'
-                                    ><span className='artist-text'>Aritst: </span>
-                                        {/* {song.User.username} */}
+                                    ><span className='artist-text'>Artist: </span>
+                                        {console.log(playlist)}
                                     </span>
                                 </span>
                             </span>
