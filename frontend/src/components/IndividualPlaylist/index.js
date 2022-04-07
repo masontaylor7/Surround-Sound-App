@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { csrfFetch } from '../../store/csrf';
 
 import { myPlaylists } from '../../store/playlists';
 import { allSongs, deleteSong } from '../../store/songs';
@@ -28,7 +29,7 @@ function IndividualPlaylist({ setTitle, setUrl }) {
     const userId = sessionUser.id
 
     useEffect(() => {
-        dispatch(allSongs())
+        // dispatch(allSongs())
         dispatch(myPlaylists(userId))
     }, [dispatch])
 
@@ -37,6 +38,13 @@ function IndividualPlaylist({ setTitle, setUrl }) {
         // setNewUrl(songUrl);
         setTitle(songTitle)
         setUrl(songUrl)
+    }
+
+    const fetchArtistName = async (userId) => {
+        const response = await csrfFetch(`/api/users/${userId}`)
+        const user = await response.json();
+        console.log(typeof user.user.username)
+        return(user.user.username)
     }
 
     return (
@@ -58,7 +66,7 @@ function IndividualPlaylist({ setTitle, setUrl }) {
                                     </span>
                                     <span className='atist-name-block'
                                     ><span className='artist-text'>Artist: </span>
-                                        {console.log(playlist)}
+                                        {song.User.username}
                                     </span>
                                 </span>
                             </span>

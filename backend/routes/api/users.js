@@ -41,5 +41,11 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     })
 }))
 
+router.get('/:id', asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+    return res.json({user})
+}))
+
 
 module.exports = router;
