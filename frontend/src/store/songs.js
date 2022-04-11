@@ -34,7 +34,7 @@ export const removeSong = (song) => {
 }
 
 
-export const allSongs = () => async(dispatch) => {
+export const allSongs = () => async (dispatch) => {
     const response = await fetch('/api/songs', {
         method: 'GET'
     })
@@ -65,7 +65,7 @@ export const deleteSong = (songId) => async (dispatch) => {
     if (response.ok) {
         const song = await response.json();
         dispatch(removeSong(song));
-        return song
+        return song;
     };
 };
 

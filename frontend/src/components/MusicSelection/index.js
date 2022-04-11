@@ -62,7 +62,7 @@ function MusicSelection({ setTitle, setUrl }) {
                                     dispatch(deleteSong(song.id))
                                     history.push('/music')
                                 };
-                            }}><TiDelete className='delete-button-button' /></button> : null}
+                            }}><TiDelete title='delete song' className='delete-button-button' /></button> : null}
 
                             {sessionUser && sessionUser.id === song.userId ? <EditSongFormModal title={song.title} url={song.url} songId={song.id} /> : null}
 

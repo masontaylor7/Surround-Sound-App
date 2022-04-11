@@ -4,10 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     songId: {
       allowNull: false,
       type: DataTypes.INTEGER,
+      onDelete: 'CASCADE',
     },
     playlistId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      onDelete: 'CASCADE',
     }
   }, {});
   Playlist_Song.associate = function(models) {

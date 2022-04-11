@@ -28,6 +28,14 @@ router.post('/',
         }
     }));
 
+router.get('/',
+    asyncHandler(async (req, res) => {
+        const data = await Playlist_Song.findAll();
+        return res.json({
+            data
+        })
+    }))
+
 router.get('/:playlistId',
     asyncHandler(async (req, res) => {
         const { playlistId } = req.params;
@@ -38,6 +46,21 @@ router.get('/:playlistId',
         })
         return res.json(entries)
     }))
+
+router.delete('/:playlistId/:songId',
+    asyncHandler(async (req, res) => {
+        const { playlistId, songId } = req.params;
+        const song = await Playlist_Song.findOne({
+            where: {
+                playlistId,
+                songId
+            }
+        })
+        // remove the song from the playlist:
+        song.destroy();
+        return res.json(song);
+    }))
+
 
 
 

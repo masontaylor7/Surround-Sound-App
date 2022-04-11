@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { csrfFetch } from '../../store/csrf';
 
 import { myPlaylists } from '../../store/playlists';
-import { allSongs, deleteSong } from '../../store/songs';
+import songsReducer, { allSongs, deleteSong } from '../../store/songs';
+import { removeFromPlaylist, allSongsInPlaylist, allData } from '../../store/playlist-songs'
 import EditSongFormModal from '../EditSongFormModal';
 import AddSongToPlaylistModal from '../AddSongToPlaylistModal';
 
@@ -16,11 +17,11 @@ import { MdCancelPresentation } from 'react-icons/md'
 import './IndividualPlaylist.css'
 
 
-
 function IndividualPlaylist({ setTitle, setUrl }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const playlistSongsObj = useSelector(state => state.playlistSongs)
 
     const { playlistId } = useParams()
     const playlist = useSelector(state => state.playlists[+playlistId])
@@ -29,8 +30,13 @@ function IndividualPlaylist({ setTitle, setUrl }) {
     const userId = sessionUser.id
 
     useEffect(() => {
-        // dispatch(allSongs())
         dispatch(myPlaylists(userId))
+
+    }, [dispatch])
+
+    useEffect(() => {
+
+        dispatch(allData())
     }, [dispatch])
 
     const playClick = (songTitle, songUrl) => {
@@ -40,12 +46,12 @@ function IndividualPlaylist({ setTitle, setUrl }) {
         setUrl(songUrl)
     }
 
-    const fetchArtistName = async (userId) => {
-        const response = await csrfFetch(`/api/users/${userId}`)
-        const user = await response.json();
-        console.log(typeof user.user.username)
-        return(user.user.username)
-    }
+    // const fetchArtistName = async (userId) => {
+    //     const response = await csrfFetch(`/api/users/${userId}`)
+    //     const user = await response.json();
+    //     console.log(typeof user.user.username)
+    //     return(user.user.username)
+    // }
 
     return (
         <div className='music-section-block'>
@@ -85,8 +91,8 @@ function IndividualPlaylist({ setTitle, setUrl }) {
                                 {sessionUser && sessionUser.id === playlist.userId ? <button type='button' className='remove-song-button-block' onClick={() => {
                                     const confirm = window.confirm("Are you sure you want to remove this song from your playlist?")
                                     if (confirm === true) {
-                                        dispatch(deleteSong(song.id))
-                                        history.push('/music')
+                                        dispatch(removeFromPlaylist(song.id, playlist.id))
+                                        history.go(`/users/${userId}/playlists/${+playlistId}`)
                                     };
                                 }}><MdCancelPresentation title='remove song from playlist' className='remove-button' /></button> : null}
 
